@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voici toutes les informations concernant les écoles de votre ville{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    {% for ville in villes %}
+        <h1> Nom de la ville : <a href="{{ path('home_ville', { 'nom': ville.nom }) }}">{{ ville.nom }}</a></h1>
+        <ol>
+            {% for ecole in ville.ecoles %}
+                <li>
+                    <a href=" {{ path('home_ecole', { 'nom': ecole.nom }) }}">{{ ecole.nom }}</a>
+                    : {{ ecole.adresse }} : {{ ecole.etudiant.nom }}
+                </li>
+            {% endfor %}
+        </ol>
+    {% endfor %}
+</div>
+
+{% endblock %}
